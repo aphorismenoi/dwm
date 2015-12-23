@@ -5,12 +5,12 @@ static const char *fonts[] = {
 	"CousineRegen:size=12"
 };
 static const char dmenufont[]       = "CousineRegen:size=12";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static const char normbordercolor[] = "#282A2E";
+static const char normbgcolor[]     = "#1D1F21";
+static const char normfgcolor[]     = "#C5C8C6";
+static const char selbordercolor[]  = "#F0C674";
+static const char selbgcolor[]      = "#1D1F21";
+static const char selfgcolor[]      = "#F0C674";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 8;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -24,9 +24,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class          instance    title       tags mask     isfloating   monitor */
+	{ "feh",          NULL,       NULL,       0,            1,           -1 },
+	{ "qutebrowser",  NULL,       NULL,       1 << 1,       0,           -1 },
+  { "Zathura",      NULL,       NULL,       1 << 7,       0,           -1 },
 };
 
 /* layout(s) */
@@ -36,8 +37,8 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[T]",      tile },    /* first entry is default */
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -54,14 +55,33 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]       = { "st", NULL };
+static const char *browser[]       = { "qutebrowser", NULL, "qutebrowser"};
+static const char *volupcmd[]      = { "dmixer", "up", NULL };
+static const char *voldncmd[]      = { "dmixer", "down", NULL };
+static const char *mpctog[]        = { "ncmpcpp", "toggle", NULL };
+static const char *mpcprev[]       = { "ncmpcpp", "prev", NULL };
+static const char *mpcnext[]       = { "ncmpcpp", "next", NULL };
+static const char *playgood[]      = { "goodsong", "-p", NULL };
+static const char *addgood[]       = { "goodsong", NULL };
+static const char *mousetoggle[]   = { "mouse", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_o,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+  { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browser } },
+	{ MODKEY,                       XK_minus,  spawn,          {.v = volupcmd } },
+  { MODKEY|ShiftMask,             XK_minus,  spawn,          {.v = voldncmd } },
+  { MODKEY,                       XK_Up,     spawn,          {.v = playgood } },
+  { MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = addgood } },
+  { MODKEY,                       XK_slash,  spawn,          {.v = mpctog } },
+  { MODKEY,                       XK_Left,   spawn,          {.v = mpcprev } },
+  { MODKEY,                       XK_Right,  spawn,          {.v = mpcnext } },
+  { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mousetoggle } },
+  { MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
