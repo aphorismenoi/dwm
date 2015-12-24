@@ -35,11 +35,15 @@ static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
+#include "bstack.c"
+#include "gaplessgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+  { "[B]",      bstack, },
+  { "[G]",      gaplessgrid },
 };
 
 /* key definitions */
@@ -67,7 +71,7 @@ static const char *playgood[]      = { "goodsong", "-p", NULL };
 static const char *addgood[]       = { "goodsong", NULL };
 static const char *mousetoggle[]   = { "mouse", NULL };
 
-
+#include "push.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_o,      spawn,          {.v = dmenucmd } },
@@ -82,7 +86,9 @@ static Key keys[] = {
   { MODKEY,                       XK_Right,  spawn,          {.v = mpcnext } },
   { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mousetoggle } },
   { MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
+  { MODKEY|ShiftMask,             XK_k,      pushup,         {0} },
+  { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },

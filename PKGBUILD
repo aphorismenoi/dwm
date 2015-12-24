@@ -23,6 +23,9 @@ md5sums=('f0b6b1093b7207f89c2a90b848c008ec'
 prepare() {
   cd $srcdir/$pkgname-$pkgver
   cp $srcdir/config.h config.h
+  cp $srcdir/push.c push.c
+  cp $srcdir/bstack.c bstack.c
+  cp $srcdir/gaplessgrid.c gaplessgrid.c
 }
 
 build() {
