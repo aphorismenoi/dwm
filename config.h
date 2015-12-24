@@ -85,7 +85,7 @@ static Key keys[] = {
   { MODKEY,                       XK_Left,   spawn,          {.v = mpcprev } },
   { MODKEY,                       XK_Right,  spawn,          {.v = mpcnext } },
   { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mousetoggle } },
-  { MODKEY|ControlMask            XK_b,      togglebar,      {0} },
+  { MODKEY|ControlMask,            XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
   { MODKEY|ShiftMask,             XK_k,      pushup,         {0} },
   { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
