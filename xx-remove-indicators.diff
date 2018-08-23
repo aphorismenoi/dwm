@@ -1,0 +1,23 @@
+--- dwm/dwm.c.orig	2018-08-20 21:35:48.441578191 +0200
++++ dwm/dwm.c	2018-08-20 21:40:20.919454419 +0200
+@@ -718,14 +718,12 @@
+ 			urg |= c->tags;
+ 	}
+ 	x = 0;
+-	for (i = 0; i < LENGTH(tags); i++) {
+-		w = TEXTW(tags[i]);
+-		drw_setscheme(drw, &scheme[(m->tagset[m->seltags] & 1 << i) ? 1 : (urg & 1 << i ? 2 : 0)]);
+-		drw_text(drw, x, 0, w, bh, tags[i], 0);
+-		drw_rect(drw, x + 1, 1, dx, dx, m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+-		         occ & 1 << i, 0);
+-		x += w;
+-	}
++        for (i = 0; i < LENGTH(tags); i++) {
++          w = TEXTW(tags[i]);
++          drw_setscheme(drw, &scheme[(m->tagset[m->seltags] & 1 << i) ? 1 : (urg & 1 << i ? 2 : (occ & 1 << i ? 3:0))]);
++          drw_text(drw, x, 0, w, bh, tags[i], 0);
++          x += w;
++        }
+ 	w = blw = TEXTW(m->ltsymbol);
+ 	drw_setscheme(drw, &scheme[0]);
+ 	drw_text(drw, x, 0, w, bh, m->ltsymbol, 0);

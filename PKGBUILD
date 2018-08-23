@@ -5,7 +5,7 @@
 
 pkgname=dwm
 pkgver=6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -15,11 +15,19 @@ depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st')
 install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
+  push.c
+  bstack.c
+  gaplessgrid.c
 	dwm.desktop)
-md5sums=('f0b6b1093b7207f89c2a90b848c008ec'
-         '34cb6696c9100956edf303708d837c5e'
-         'da1c20bfd882db10b74c814ea74dfadd'
-         '939f403a71b6e85261d09fc3412269ee')
+
+_patches=(01-scratchpad.diff
+          02-savefloats.diff
+          03-statuscolors.diff
+          04-attachaside.diff
+          05-tilegap.diff
+          )
+
+source=(${source[@]} ${_patches[@]})
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -31,6 +39,13 @@ prepare() {
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+
+  echo "==> Applying Patches"
+  for p in "${_patches[@]}"; do
+    echo "  -> $p"
+    patch < ../$p || return 1
+  done
+
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
@@ -41,3 +56,11 @@ package() {
   install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
   install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
 }
+md5sums=('f0b6b1093b7207f89c2a90b848c008ec'
+         'd5f08d9543594612fc2c4dffaef15fcc'
+         '689534c579b1782440ddcaf71537d8fd'
+         '362e07f0f042875b84d7739d9d8855c4'
+         '4ba509b3b93f7b1418dc703c70de536f'
+         '939f403a71b6e85261d09fc3412269ee'
+         '4f0b57c6b9331b0a90c97d9c14944609'
+         '103805203b6f34cfcba7477d57bd98f2')
