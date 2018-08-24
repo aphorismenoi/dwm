@@ -5,12 +5,12 @@ static const char *fonts[] = {
    "DejaVuSans Mono:size=12"
 };
 static const char dmenufont[]       = "DejaVuSans Mono:size=12";
-static const char normbordercolor[] = "#1D1F21";
-static const char normbgcolor[]     = "#1D1F21";
-static const char normfgcolor[]     = "#C5C8C6";
-static const char selbordercolor[]  = "#373B41";
-static const char selbgcolor[]      = "#1D1F21";
-static const char selfgcolor[]      = "#F0C674";
+static const char normbordercolor[] = "#181818";
+static const char normbgcolor[]     = "#181818";
+static const char normfgcolor[]     = "#585858";
+static const char selbordercolor[]  = "#585858";
+static const char selbgcolor[]      = "#181818";
+static const char selfgcolor[]      = "#D8D8D8";
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int gappx     = 18;       /* gap pixel between windows */
 static const unsigned int snap      = 8;       /* snap pixel */
@@ -21,10 +21,10 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 #define NUMCOLORS 4
 static const char colors[NUMCOLORS][MAXCOLORS][8] = {
   // border   foreground background
-  { "#1D1F21", "#969896", "#1D1F21" },  // normal
-  { "#373B41", "#C5C8C6", "#1D1F21" },  // selected
-  { "#ff0000", "#A54242", "#1D1F21" },  // urgent/warning  (black on yellow)
-  { "#ff0000", "#373B41", "#1D1F21" },  // occupied 
+  { "#181818", "#585858", "#181818" },  // normal
+  { "#585858", "#D8D8D8", "#181818" },  // selected
+  { "#AB4642", "#AB4642", "#181818" },  // urgent/warning  (black on yellow)
+  { "#181818", "#F7CA88", "#181818" },  // occupied 
   // add more here
 };
 
