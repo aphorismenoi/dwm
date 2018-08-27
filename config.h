@@ -2,9 +2,9 @@
 
 /* appearance */
 static const char *fonts[] = {
-   "DejaVuSans Mono:size=12"
+   "Monospace:size=12"
 };
-static const char dmenufont[]       = "DejaVuSans Mono:size=12";
+static const char dmenufont[]       = "Monospace:size=12";
 static const char normbordercolor[] = "#181818";
 static const char normbgcolor[]     = "#181818";
 static const char normfgcolor[]     = "#585858";
@@ -40,11 +40,11 @@ static const Rule rules[] = {
 	{ "feh",          NULL,       NULL,       0,            1,           -1 },
 	{ "qutebrowser",  NULL,       NULL,       1 << 1,       0,           -1 },
         { "Zathura",      NULL,       NULL,       1 << 5,       0,           -1 },
-        { "nautilus",     NULL,       NULL,       1 << 5,       1            -1 },
         { "mpv",          NULL,       NULL,       1 << 4,       0,           -1 },
-        { "st-256color",  NULL,       "ncmpcpp",  1 << 3,       0,           -1 },
+        { "st-256color",  NULL,       "ranger",   1 << 5,       0,           -1 },
         { "st-256color",  NULL,       "ncmpcpp",  1 << 3,       0,           -1 },
         { "st-256color",  NULL,       "mutt",     1 << 2,       0,           -1 },
+        { "st-256color",  NULL,       "w3m",      1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -60,8 +60,8 @@ static const Layout layouts[] = {
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-  { "[B]",      bstack, },
-  { "[G]",      gaplessgrid },
+        { "[B]",      bstack, },
+        { "[G]",      gaplessgrid },
 };
 
 /* key definitions */
@@ -78,9 +78,9 @@ static const Layout layouts[] = {
 /* commands */
 static const char scratchpadname[] = "scratchpad";
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-/*static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };*/
 static const char *termcmd[]       = { "st", NULL };
 static const char *dmenucmd[]      = { "dm", NULL };
+static const char *searchraw[]     = { "dm_sr", NULL };
 static const char *browser[]       = { "qutebrowser", NULL, "qutebrowser"};
 static const char *volupcmd[]      = { "dmixer", "up", NULL };
 static const char *voldncmd[]      = { "dmixer", "down", NULL };
@@ -90,7 +90,7 @@ static const char *mpcprev[]       = { "mpc", "prev", NULL };
 static const char *mpcnext[]       = { "mpc", "next", NULL };
 static const char *playgood[]      = { "goodsong", "-p", NULL };
 static const char *addgood[]       = { "goodsong", NULL };
-static const char *searchraw[]     = { "dm_sr", NULL };
+static const char *handleurl[]     = { "urlhandler", NULL };
 static const char *mousemove[]     = { "swarp", "0", "1440", NULL};
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
@@ -109,6 +109,7 @@ static Key keys[] = {
         { MODKEY,                       XK_Left,   spawn,          {.v = mpcprev } },
         { MODKEY,                       XK_Right,  spawn,          {.v = mpcnext } },
         { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mousemove } },
+        { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = handleurl } },
         { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = searchraw } },
         { MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
         { MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
