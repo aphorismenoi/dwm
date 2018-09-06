@@ -6,11 +6,6 @@ static const char *fonts[] = {
 };
 static const char dmenufont[]       = "Monospace:size=12";
 static const char normbordercolor[] = "#181818";
-static const char normbgcolor[]     = "#181818";
-static const char normfgcolor[]     = "#585858";
-static const char selbordercolor[]  = "#585858";
-static const char selbgcolor[]      = "#181818";
-static const char selfgcolor[]      = "#D8D8D8";
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int gappx     = 18;       /* gap pixel between windows */
 static const unsigned int snap      = 8;       /* snap pixel */
@@ -18,18 +13,22 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* statuscolors */
-#define NUMCOLORS 4
-static const char colors[NUMCOLORS][MAXCOLORS][8] = {
+#define NUMCOLORS 9
+static const char colors[NUMCOLORS][MAXCOLORS][9] = {
   // border   foreground background
   { "#181818", "#585858", "#181818" },  // normal
   { "#585858", "#D8D8D8", "#181818" },  // selected
-  { "#AB4642", "#AB4642", "#181818" },  // urgent/warning  (black on yellow)
-  { "#181818", "#F7CA88", "#181818" },  // occupied 
-  // add more here
+  { "#AB4642", "#AB4642", "#181818" },  // red
+  { "#181818", "#A1B56C", "#181818" },  // green
+  { "#181818", "#F7CA88", "#181818" },  // yellow
+  { "#181818", "#7CAFC2", "#181818" },  // blue
+  { "#181818", "#BA8BAF", "#181818" },  // magenta
+  { "#181818", "#86C1B9", "#181818" },  // cyan
+  { "#181818", "#585858", "#181818" },  // bright black
 };
 
 /* tagging */
-static const char *tags[] = { "term", "web", "mail", "music", "video", "file", "misc" };
+static const char *tags[] = { "term", "web", "com", "media", "file", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -39,9 +38,9 @@ static const Rule rules[] = {
 	/* class          instance    title       tags mask     isfloating   monitor */
 	{ "feh",          NULL,       NULL,       0,            1,           -1 },
 	{ "qutebrowser",  NULL,       NULL,       1 << 1,       0,           -1 },
-        { "Zathura",      NULL,       NULL,       1 << 5,       0,           -1 },
-        { "mpv",          NULL,       NULL,       1 << 4,       0,           -1 },
-        { "st-256color",  NULL,       "ranger",   1 << 5,       0,           -1 },
+        { "Zathura",      NULL,       NULL,       1 << 4,       0,           -1 },
+        { "mpv",          NULL,       NULL,       1 << 3,       0,           -1 },
+        { "st-256color",  NULL,       "ranger",   1 << 4,       0,           -1 },
         { "st-256color",  NULL,       "ncmpcpp",  1 << 3,       0,           -1 },
         { "st-256color",  NULL,       "mutt",     1 << 2,       0,           -1 },
         { "st-256color",  NULL,       "w3m",      1 << 1,       0,           -1 },

@@ -15,9 +15,9 @@ depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st')
 install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
-  push.c
-  bstack.c
-  gaplessgrid.c
+        push.c
+        bstack.c
+        gaplessgrid.c
 	dwm.desktop)
 
 _patches=(01-scratchpad.diff
