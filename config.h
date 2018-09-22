@@ -44,6 +44,7 @@ static const Rule rules[] = {
         { "st-256color",  NULL,       "ncmpcpp",  1 << 3,       0,           -1 },
         { "st-256color",  NULL,       "mutt",     1 << 2,       0,           -1 },
         { "st-256color",  NULL,       "w3m",      1 << 1,       0,           -1 },
+        { "gzdoom",       NULL,       NULL,       1 << 5,       1,           -1 },
 };
 
 /* layout(s) */
