@@ -94,6 +94,7 @@ static const char *addgood[]       = { "goodsong", NULL };
 static const char *handleurl[]     = { "urlhandler", NULL };
 static const char *mousemove[]     = { "swarp", "0", "1440", NULL};
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *dpasscmd[]      = { "dpass", NULL };
 
 #include "push.c"
 static Key keys[] = {
@@ -112,6 +113,7 @@ static Key keys[] = {
         { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mousemove } },
         { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = handleurl } },
         { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = searchraw } },
+        { MODKEY,                       XK_p,      spawn,          {.v = dpasscmd } },
         { MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
         { MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
