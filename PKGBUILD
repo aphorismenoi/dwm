@@ -56,11 +56,15 @@ package() {
   install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
   install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
 }
+
 md5sums=('f0b6b1093b7207f89c2a90b848c008ec'
-         'd5f08d9543594612fc2c4dffaef15fcc'
+         'c94b4dfb5253f84ed1839334d0e5de99'
          '689534c579b1782440ddcaf71537d8fd'
          '362e07f0f042875b84d7739d9d8855c4'
          '4ba509b3b93f7b1418dc703c70de536f'
          '939f403a71b6e85261d09fc3412269ee'
-         '4f0b57c6b9331b0a90c97d9c14944609'
-         '103805203b6f34cfcba7477d57bd98f2')
+         'c28d9aba178490b4188158bc24159cdb'
+         '103805203b6f34cfcba7477d57bd98f2'
+         'ed406bed8c3278d99d3ff556f5f4f228'
+         'e67fab561c52b8380050130350fe0267'
+         '3c0e4dd2f569d974233d559f34a11be8')
