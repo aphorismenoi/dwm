@@ -1,0 +1,20 @@
+--- dwm.c.orig	2019-04-29 05:54:28.054048115 +0200
++++ dwm.c	2019-04-29 06:30:12.078683215 +0200
+@@ -60,7 +60,7 @@
+ 
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+-enum { SchemeNorm, SchemeSel }; /* color schemes */
++enum { SchemeNorm, SchemeSel, SchemeWarn, SchemeUrgent }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+@@ -721,7 +721,7 @@
+ 
+ 	/* draw status first so it can be overdrawn by tags later */
+ 	if (m == selmon) { /* status is only drawn on selected monitor */
+-		drw_setscheme(drw, scheme[SchemeNorm]);
++		drw_setscheme(drw, scheme[SchemeSel]);
+ 		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+ 		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
+ 	}
