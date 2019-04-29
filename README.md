@@ -1,5 +1,6 @@
 # dwm
 dwm 6.2 configured to my personal liking
+![dwm](dwm-20190429.png?raw=true "dwm")
 
 ## patches included
 * push_no_master
